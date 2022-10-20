@@ -9,13 +9,6 @@ import networkx as nx
 client = Github(st.secrets["ACCESS_TOKEN"], per_page=100)
 
 
-# def main():
-# 	USER = '99SharmaTushar'
-# 	REPO = 'Codeforces-Performace-Analyser'
-# 	user = client.get_user(USER)
-# 	repo = user.get_repo(REPO)
-#     st.write("Visualising Stargazer Network : ");
-
 def main():
     USER = st.text_input("Enter Github Username : ", value="99SharmaTushar")
     REPO = st.text_input("Enter Github Repo : ",
@@ -55,7 +48,6 @@ def main():
     dot = nx.nx_pydot.to_pydot(gp)
     st.graphviz_chart(dot.to_string())
 
-    st.header("Visualizing Followers's Followers Network : ")
     for follower in followers:
         followers_2 = [s for s in follower.get_followers()]
         for follower_2 in followers_2:
