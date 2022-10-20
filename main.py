@@ -63,7 +63,7 @@ def main():
 if __name__ == '__main__':
     st.title("Social Network Analysis on Github Users")
     st.warning(
-        'Higher Followers or stars will slow down the execution,', icon="⚠️")
+        'Higher Followers or stars will slow down the execution,')
     main()
     st.markdown(
         """
