@@ -6,7 +6,7 @@ import networkx as nx
 import networkx as nx
 
 
-client = Github(ACCESS_TOKEN, per_page=100)
+client = Github(st.secrets["ACCESS_TOKEN"], per_page=100)
 
 
 # def main():
