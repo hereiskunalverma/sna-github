@@ -10,6 +10,7 @@ client = Github(st.secrets["ACCESS_TOKEN"], per_page=100)
 
 
 def main():
+	st.warning('Higher Followers or stars will slow down the execution,', icon="⚠️")
     USER = st.text_input("Enter Github Username : ", value="99SharmaTushar")
     REPO = st.text_input("Enter Github Repo : ",
                          value="Codeforces-Performace-Analyser")
