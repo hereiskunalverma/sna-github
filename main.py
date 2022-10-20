@@ -36,27 +36,28 @@ def main():
     user = client.get_user(USER)
 
     st.header("Visualizing Follower Network : ")
-    g_followers = nx.Graph()
-    g_followers.add_node(user.login+'(user)', type='user')
-    followers = [s for s in user.get_followers()]
-    st.write(f"Number of Followers : {len(followers)}")
-    for follower in followers:
-        g_followers.add_node(follower.login+'(user)', type='user')
-        g_followers.add_edge(follower.login+'(user)',
-                             user.login+'(repo)', type='follows')
-    gp = nx.complete_graph(g_followers)
-    dot = nx.nx_pydot.to_pydot(gp)
-    st.graphviz_chart(dot.to_string())
+    if st.button("Visualize"):
+        g_followers = nx.Graph()
+        g_followers.add_node(user.login+'(user)', type='user')
+        followers = [s for s in user.get_followers()]
+        st.write(f"Number of Followers : {len(followers)}")
+        for follower in followers:
+            g_followers.add_node(follower.login+'(user)', type='user')
+            g_followers.add_edge(follower.login+'(user)',
+                                 user.login+'(repo)', type='follows')
+        gp = nx.complete_graph(g_followers)
+        dot = nx.nx_pydot.to_pydot(gp)
+        st.graphviz_chart(dot.to_string())
 
-    for follower in followers:
-        followers_2 = [s for s in follower.get_followers()]
-        for follower_2 in followers_2:
-            g_followers.add_node(follower_2.login+'(user)', type='user')
-            g_followers.add_edge(follower_2.login+'(user)',
-                                 follower.login+'(repo)', type='follows')
-    gp = nx.complete_graph(g_followers)
-    dot = nx.nx_pydot.to_pydot(gp)
-    st.graphviz_chart(dot.to_string())
+        for follower in followers:
+            followers_2 = [s for s in follower.get_followers()]
+            for follower_2 in followers_2:
+                g_followers.add_node(follower_2.login+'(user)', type='user')
+                g_followers.add_edge(follower_2.login+'(user)',
+                                     follower.login+'(repo)', type='follows')
+        gp = nx.complete_graph(g_followers)
+        dot = nx.nx_pydot.to_pydot(gp)
+        st.graphviz_chart(dot.to_string())
 
 
 if __name__ == '__main__':
