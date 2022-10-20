@@ -36,7 +36,7 @@ def main():
     user = client.get_user(USER)
 
     st.header("Visualizing Follower Network : ")
-    if st.button("Visualize"):
+    if st.button("Visualize Network"):
         g_followers = nx.Graph()
         g_followers.add_node(user.login+'(user)', type='user')
         followers = [s for s in user.get_followers()]
