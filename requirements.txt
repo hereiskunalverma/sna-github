@@ -1,3 +1,5 @@
 networkx==2.8.7
 PyGithub==1.56
 streamlit==1.5.1
+pydot
+matplotlib
